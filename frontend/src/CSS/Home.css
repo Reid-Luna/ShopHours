@@ -1,0 +1,127 @@
+.Home {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.Home .Main {
+  flex: 1;
+}
+
+.Home header {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1%;
+  width: 98%;
+  color: #3f3f3f;
+}
+
+.Home .Main {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 75%;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.Home .Main .Search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.Home .Main .SearchTerm {
+  width: 100%;
+  border: 3px solid #3f3f3f;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.Home .Main .SearchTerm:focus {
+  color: #3f3f3f;
+}
+
+.Home .Main .SearchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #3f3f3f;
+  background: #3f3f3f;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.Home footer {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  padding: 10px;
+  width: 75%;
+  min-width: 300px;
+  max-width: 700px;
+
+  align-self: center;
+}
+
+.Home .Timesheet {
+  background-image: url("https://www.clipartmax.com/png/middle/287-2875762_timesheet-icon-timesheet-icon.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+  height: 3rem;
+  width: 3rem;
+}
+
+.Home .QR {
+  background-image: url("https://www.freeiconspng.com/thumbs/camera-icon/camera-icon-21.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100px;
+
+  background-color: #f2f2f2;
+}
+
+.Home .Stat {
+  display: flex;
+  flex-flow: column-reverse;
+  justify-content: center;
+  align-items: center;
+
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+
+  width: 100%;
+
+  background-color: #f2f2f2;
+  color: #3f3f3f;
+
+  cursor: pointer;
+}
+
+.Home .Stat .title {
+  font-weight: bold;
+}
+
+@media screen and (min-width: 769px) {
+  .Home .QR {
+    display: none;
+  }
+}
