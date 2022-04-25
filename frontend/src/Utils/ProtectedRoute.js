@@ -1,10 +1,10 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../CPA";
+import { useAPI } from "../CPA";
 
 export const ProtectedRoute = ({ children }) => {
-  const { bear } = useAuth();
+  const { bear } = useAPI();
 
-  if (!bear) return <Navigate to="/" replace />;
+  if (!bear) return <Navigate to="/login" replace />;
 
   return children;
 };

@@ -1,21 +1,21 @@
 import "../CSS/Login.css";
 import { useState } from "react";
-import { useAuth } from "../CPA";
-import { useNavigate } from "react-router-dom";
+import { useAPI } from "../CPA";
+import { useNavigate, Navigate } from "react-router-dom";
 
 export const Login = () => {
-  const { doLogin } = useAuth();
+  const { doLogin, bear } = useAPI();
   const navigate = useNavigate();
 
   const [iU, ciU] = useState("");
   const [iP, ciP] = useState("");
 
   const handleLogin = () => {
-    doLogin();
-    navigate("/home");
+    doLogin(iU, iP);
+    navigate("/");
   };
 
-  return (
+  return !bear ? (
     <div className="Login">
       <div className="Form">
         <input
@@ -33,6 +33,11 @@ export const Login = () => {
 
         <input onClick={handleLogin} type="submit" value="Login" />
       </div>
+      <div className="switch" onClick={() => navigate("/signup")}>
+        Sign Up
+      </div>
     </div>
+  ) : (
+    <Navigate to="/" replace />
   );
 };

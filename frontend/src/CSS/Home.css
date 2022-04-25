@@ -6,38 +6,43 @@
   align-items: center;
 }
 
-.Home .Main {
-  flex: 1;
-}
-
 .Home header {
   display: flex;
   flex-flow: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
   padding: 1%;
   width: 98%;
   color: #3f3f3f;
 }
 
 .Home .Main {
+  flex: 1;
+  margin: 30px;
   display: flex;
-  flex-flow: column;
+  flex-flow: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  width: 75%;
-  min-width: 300px;
-  max-width: 700px;
+  width: 95%;
+  overflow-y: scroll;
 }
 
-.Home .Main .Search {
-  width: 100%;
+.Main > * {
+  flex: 1 1 200px;
+  max-width: 200px;
+  min-height: 200px;
+  text-align: center;
+}
+
+.Home .Search {
+  width: 25%;
   position: relative;
   display: flex;
 }
 
-.Home .Main .SearchTerm {
+.Home .SearchTerm {
   width: 100%;
   border: 3px solid #3f3f3f;
   border-right: none;
@@ -48,11 +53,11 @@
   color: #9dbfaf;
 }
 
-.Home .Main .SearchTerm:focus {
+.Home .SearchTerm:focus {
   color: #3f3f3f;
 }
 
-.Home .Main .SearchButton {
+.Home .SearchButton {
   width: 40px;
   height: 36px;
   border: 1px solid #3f3f3f;
@@ -86,6 +91,7 @@
 }
 
 .Home .QR {
+  justify-self: flex-start;
   background-image: url("https://www.freeiconspng.com/thumbs/camera-icon/camera-icon-21.png");
   background-repeat: no-repeat;
   background-position: left;
@@ -96,6 +102,47 @@
   border-radius: 100px;
 
   background-color: #f2f2f2;
+}
+
+.Home .User {
+  justify-self: flex-end;
+  background-image: url("./user.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+
+  height: 2rem;
+  width: 2rem;
+
+  background-color: #fff;
+
+  cursor: pointer;
+}
+
+.Home .SidebarLogo {
+  justify-self: flex-end;
+  background-image: url("./logo.png");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+
+  height: 2rem;
+  width: 2rem;
+
+  background-color: #fff;
+
+  cursor: pointer;
+}
+
+.Home .result {
+  cursor: pointer;
+
+  width: 75%;
+  background: #3f3f3f0a;
+  border-radius: 10px;
+
+  padding: 10px;
+  margin: 10px;
 }
 
 .Home .Stat {

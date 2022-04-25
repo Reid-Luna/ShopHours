@@ -34,3 +34,10 @@
   background: #8294ba;
   color: #fff;
 }
+
+.Login .switch {
+  width: 50%;
+  text-align: right;
+  color: #777777;
+  cursor: pointer;
+}

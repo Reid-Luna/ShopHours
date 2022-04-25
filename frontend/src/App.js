@@ -1,28 +1,29 @@
 import "./CSS/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Login, Home } from "./Pages";
-import { AuthProvider, useAuth, SearchProvider } from "./CPA";
+import { Login, Home, Signup } from "./Pages";
+import { APIProvider, useAPI } from "./CPA";
 import { ProtectedRoute } from "./Utils";
 
 const App = () => {
-  const { bear } = useAuth();
+  const { bear } = useAPI();
   return (
     <Router>
-      <AuthProvider>
+      <APIProvider>
         <Routes>
           <Route
-            path="/home"
+            path="/"
+            index
             element={
               <ProtectedRoute>
-                <SearchProvider>
-                  <Home />
-                </SearchProvider>
+                <Home />
               </ProtectedRoute>
             }
           />
-          <Route index element={<Login />} />
+          <Route path="/order/*" element={<></>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
-      </AuthProvider>
+      </APIProvider>
     </Router>
   );
 };
