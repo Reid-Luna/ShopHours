@@ -2,23 +2,7 @@ import { Router } from "express";
 import { SM } from "../utils";
 const r = new Router();
 
-r.get("/order/:filter", async (req, res) => {
-  const { filter } = req.params;
-  try {
-    const order = await SM.GetOrdersInProgress(filter);
-    res
-      .status(200)
-      .json(
-        filter.length < 6
-          ? order
-          : order.filter((o) => o.vehicle?.vin?.substr(-6) === filter)
-      );
-  } catch (e) {
-    res.status(500).json({ e });
-  }
-});
-
-r.get("/vehicle/:filter", async (req, res) => {
+r.get("/vehicle/:filter", async (req, res, next) => {
   const { filter } = req.params;
   try {
     const vehicles = await SM.GetVehicles();
@@ -30,7 +14,28 @@ r.get("/vehicle/:filter", async (req, res) => {
           : vehicles.filter((o) => o.vin?.substr(-6) === filter)[0]
       );
   } catch (e) {
-    res.status(500).json({ e });
+    next(e);
+  }
+});
+
+r.get("/:filter", async (req, res, next) => {
+  const { filter } = req.params;
+  try {
+    const vehicles = await SM.GetVehicles();
+    const orders = await SM.GetOrders();
+    res
+      .status(200)
+      .json(
+        filter.length < 6
+          ? [...vehicles, ...orders].filter(
+              (o) =>
+                o?.vin?.substr(-6)?.includes(filter) ||
+                `${o?.number}`.includes(filter)
+            )
+          : [...vehicles].filter((o) => o?.vin?.substr(-6)?.includes(filter))
+      );
+  } catch (e) {
+    next(e);
   }
 });
 

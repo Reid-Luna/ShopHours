@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   admin: { type: Boolean, required: true, default: false },
   pastOrders: [{ type: Array, required: true, default: [] }],
   workOrders: [{ type: Array, required: true, default: [] }],
+  pdfs: [{ type: Array, required: true, default: [] }],
   frontlined: { type: Number, required: true, default: 0 },
   returned: { type: Number, required: true, default: 0 },
   hours: { type: Number, required: true, default: 0 },

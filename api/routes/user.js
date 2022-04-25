@@ -3,16 +3,12 @@ import passport from "passport";
 import jwt from "jsonwebtoken";
 const r = new Router();
 
-r.post(
-  "/signup",
-  passport.authenticate("signup", { session: false }),
-  async (req, res, next) => {
-    res.json({
-      message: "Signup successful",
-      user: req.user,
-    });
-  }
-);
+r.post("/signup", passport.authenticate("signup"), async (req, res, next) => {
+  res.json({
+    message: "Signup successful",
+    user: req.user,
+  });
+});
 
 r.post("/login", async (req, res, next) => {
   passport.authenticate("login", async (err, user, info) => {

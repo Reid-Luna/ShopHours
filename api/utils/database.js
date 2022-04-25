@@ -27,3 +27,9 @@ export const init = () =>
       }
     }
   });
+
+mongoose.connection.on("error", async (error) => {
+  console.log("mongoose disconnected due to:", error);
+  console.log("reconnecting");
+  await init();
+});

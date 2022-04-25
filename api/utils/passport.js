@@ -11,11 +11,13 @@ passport.use(
       passwordField: "password",
     },
     async (username, password, done) => {
+      console.log("trying to create user");
       try {
-        const user = await UserModel.create({ username, password });
-
+        const user = await User.create({ username, password });
+        console.log("Created User", user);
         return done(null, user);
       } catch (error) {
+        console.log("Signup error", error);
         done(error);
       }
     }
@@ -31,7 +33,7 @@ passport.use(
     },
     async (username, password, done) => {
       try {
-        const user = await UserModel.findOne({ username });
+        const user = await User.findOne({ username });
 
         if (!user) {
           return done(null, false, { message: "User not found" });
@@ -55,7 +57,7 @@ passport.use(
   new Strategy(
     {
       secretOrKey: "Secret69",
-      jwtFromRequest: ExtractJwt.fromUrlQueryParameter("secret_token"),
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     },
     async (token, done) => {
       try {
@@ -66,3 +68,7 @@ passport.use(
     }
   )
 );
+
+passport.serializeUser((user, done) => done(null, user));
+
+passport.deserializeUser((user, done) => done(null, user));
